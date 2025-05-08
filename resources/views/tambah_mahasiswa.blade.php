@@ -30,7 +30,7 @@
                             <h4 class="card-title">Biodata Mahasiswa</h4>
                         </div>
                         <div class="card-body">
-                            <form action="#" method="POST" class="form-horizontal">
+                            <form action="{{ route('store_mahasiswa') }}" method="POST" class="form-horizontal">
                                 @csrf
 
                                 <div class="form-group row">
