@@ -5,6 +5,17 @@
 @endsection
 
 @section('content')
+<style>
+    .btn-primary {
+        background-color: #1167B1; /* Tombol berwarna biru */
+        color: white; /* Tulisan putih */
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0e4f87; /* Warna biru lebih gelap saat hover */
+    }
+    </style>
 <main class="main">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
@@ -16,7 +27,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Form Tambah Data Mahasiswa</h4>
+                            <h4 class="card-title">Biodata Mahasiswa</h4>
                         </div>
                         <div class="card-body">
                             <form action="#" method="POST" class="form-horizontal">

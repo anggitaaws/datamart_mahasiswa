@@ -4415,6 +4415,7 @@ input[type="button"].btn-block {
 
 .card-title {
   margin-bottom: 0.75rem;
+  color: #1167B1;
 }
 
 .card-subtitle {
@@ -4437,7 +4438,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: #f0f3f5;
+  background-color: #D0EFFF;
   border-bottom: 1px solid #c8ced3;
 }
 
@@ -14169,3 +14170,47 @@ body {
   breakpoint-xl: 1200px;
 }
 /*# sourceMappingURL=style.css.map */
+
+/* Sidebar background dan teks */
+.sidebar {
+  background-color: #1167B1 !important;
+  color: white;
+}
+
+/* Warna teks sidebar link */
+.sidebar-nav .nav-link {
+  color: white !important;
+}
+
+/* Warna saat hover hanya untuk link yang tidak aktif */
+.sidebar-nav .nav-link:hover {
+  background-color: #D0EFFF !important;
+  color: #1167B1 !important; /* Teks berubah menjadi biru saat hover */
+}
+
+/* Warna untuk menu yang aktif */
+.sidebar-nav .nav-link.active {
+  background-color: #1167B1 !important;
+  color: white !important;
+  font-weight: bold;
+  font-weight: 600;
+}
+
+/* Agar menu aktif tetap terpengaruh hover tetapi hover tidak mempengaruhi latar belakangnya */
+.sidebar-nav .nav-link.active:hover {
+  background-color: #1167B1 !important;
+  color: white !important; /* Tetap dengan warna latar biru */
+}
+
+/* Menghilangkan efek hover pada menu yang aktif saat berpindah */
+.sidebar-nav .nav-link:not(.active):hover {
+  background-color: #D0EFFF !important;
+  font-weight: bold;
+  color: #1167B1 !important;
+}
+
+/* Menambahkan efek transisi pada hover untuk smooth effect */
+.sidebar-nav .nav-link {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+

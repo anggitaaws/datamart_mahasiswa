@@ -1,107 +1,129 @@
-@extends('layout')
+@extends('auth')
 
 @section('title')
-    <title>Login</title>
+Login
 @endsection
 
 @section('content')
-    <style>
-        body {
-            background-color: #007BFF;
+<style>
+    .card-group {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .bg-binus {
+        background-color: #ffff;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .logo-container img {
+        max-width: 300px; /* Perbesar ukuran logo */
+        border-radius: 10px;
+        background-color: white;
+        padding: 10px;
+    }
+
+    .form-card {
+        background-color: #D0EFFF;
+    }
+
+    .input-group-text {
+        background-color: #E9F7FF;
+    }
+
+    .btn-primary {
+        background-color: #1167B1; /* Tombol berwarna biru */
+        color: white; /* Tulisan putih */
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0e4f87; /* Warna biru lebih gelap saat hover */
+    }
+
+    @media (max-width: 768px) {
+        .card-group {
+            flex-direction: column-reverse;
+            min-height: auto;
         }
 
-        .login-image-card {
-            background-image: url('{{ asset('logobinus.png') }}');
-            background-size: cover;
-            background-position: center;
-            min-height: 400px;
-            max-height: 450px;
+        .card {
+            width: 100% !important;
         }
 
-        .login-logo {
-            width: 100px;
-            height: auto;
-            margin-bottom: 20px;
+        .logo-container img {
+            max-width: 180px; /* Ukuran logo untuk layar kecil */
         }
+    }
+</style>
 
-        .btn-login-custom {
-            background-color: #004080;
-            color: white;
-            border: none;
-        }
-
-        .btn-login-custom:hover {
-            background-color: #002f66;
-        }
-
-        @media (max-width: 768px) {
-            .login-image-card {
-                min-height: 250px;
-                max-height: 300px;
-            }
-
-            .login-logo {
-                width: 80px;
-            }
-        }
-    </style>
-
-    <div class="container mt-5">
-        <div class="row justify-content-center align-items-center">
-            
-            <!-- Kolom Kiri: Gambar + Logo -->
-            <div class="col-md-6 mb-4 mb-md-0">
-                <div class="card login-image-card text-white d-flex align-items-center justify-content-center p-4 shadow">
-                    <div class="text-center">
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-10">
+            <div class="card-group d-flex gap-3">
+                <!-- Kolom Logo -->
+                <div class="card text-white bg-binus py-5 d-md-down-none flex-fill">
+                    <div class="card-body logo-container">
+                        <img src="{{ asset('assets/img/logo_binus.jpg') }}" alt="Logo Binus">
                     </div>
                 </div>
-            </div>
 
-            <!-- Kolom Kanan: Form Login -->
-            <div class="col-md-6">
-                <div class="card p-4 shadow" style="background-color: #D0EFFF">
-                    <div class="card-body text-center" >
-                        <h1 class="mb-3">Login</h1>
-                        <p class="text-muted">Sign in to your account</p>
-                        <form action="{{ route('login.post') }}" method="POST">
+                <!-- Kolom Form Login -->
+                <div class="card p-4 form-card flex-fill">
+                    <div class="card-body">
+                        <h1 class="text-center mb-3">Login</h1>
+                        <p class="text-muted text-center">Sign in to your account</p>
+
+                        <form action="{{ route('login') }}" method="POST">
                             @csrf
-
+                            <!-- Email Input -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                        <i class="icon-user"></i>
+                                        <i class="icon-user"></i> 
                                     </span>
                                 </div>
-                                <input type="text" name="email"
+                                <input type="text" name="email" placeholder="Email Address"
                                     class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                    placeholder="Username" value="{{ old('email') }}" required autofocus>
+                                    value="{{ old('email') }}" required autofocus>
                             </div>
 
+                            <!-- Password Input -->
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                        <i class="icon-lock"></i>
+                                        <i class="icon-lock"></i> <!-- Icon Password -->
                                     </span>
                                 </div>
-                                <input type="password" name="password"
-                                    class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}"
-                                    placeholder="Password" required>
+                                <input type="password" name="password" placeholder="Password"
+                                    class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" required>
                             </div>
 
+                            <!-- Error Message -->
                             @if (session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
+                                <div class="alert alert-danger">{{ session('error') }}</div>
                             @endif
 
-                            <div class="d-flex justify-content-center mb-3">
-                                <button type="submit" class="btn btn-login-custom px-4">LOGIN</button>
+                            <!-- Login Button -->
+                            <div class="row justify-content-center">
+                                <div class="col-6 text-center">
+                                    <button class="btn btn-primary px-4" type="submit">Login</button>
+                                </div>
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> 
             </div>
-
         </div>
     </div>
+</div>
 @endsection

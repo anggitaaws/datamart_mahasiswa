@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+</head>
+<body style="background-color: #1167B1;">
+    @yield('content')
+
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -28,7 +45,11 @@
     <script src="{{ asset('assets/js/pace.min.js') }}"></script>
     <script src="{{ asset('assets/js/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/coreui.min.js') }}"></script>
-
-    @yield('js')
+    <script>
+        $('#ui-view').ajaxLoad();
+        $(document).ajaxComplete(function() {
+            Pace.restart()
+        });
+    </script>
 </body>
 </html>

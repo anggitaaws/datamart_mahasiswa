@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<main class="main">
+<main class="main" style="background-color: white;">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
         <li class="breadcrumb-item active">Dashboard</li>
@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header" style="background-color: #D0EFFF;">
                             <h4 class="card-title">Tentang Kami</h4>
                         </div>
                         <div class="card-body">
