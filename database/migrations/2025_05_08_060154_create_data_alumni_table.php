@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('data_alumni', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('nim');
+            $table->string('phone');
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->string('asal_slta');
+            $table->string('program_studi');
+            $table->string('angkatan_alumni');
+            $table->string('institusi_pekerjaan');
+            $table->string('jenis_pekerjaan');
             $table->timestamps();
         });
     }

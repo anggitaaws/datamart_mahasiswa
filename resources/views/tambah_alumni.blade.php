@@ -35,6 +35,13 @@
                                         <input type="text" name="nim" class="form-control" required>
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label text-right">No telepon</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="phone" class="form-control" required>
+                                    </div>
+                                </div>
                                 
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label text-right">Tempat Lahir</label>

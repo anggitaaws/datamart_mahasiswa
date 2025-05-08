@@ -11,6 +11,16 @@ class Alumni extends Model
 
     protected $fillable =
     [
-        'nama'
+        'nama',
+        'nim',
+        'phone',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'asal_slta',
+        'program_studi',
+        'angkatan_alumni',
+        'institusi_pekerjaan',
+        'jenis_pekerjaan',
     ];
 }
