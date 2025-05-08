@@ -1,0 +1,30 @@
+<nav class="sidebar-nav">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('dashboard') }}">
+         Dashboard
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('tambah_mahasiswa') }}">
+         Tambah Data Mahasiswa
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+         Tambah Data Alumni
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+        Lihat Angkatan Mahasiswa
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+        Lihat Angkatan Alumni
+            </a>
+        </li>
+    </ul>
+</nav>
