@@ -7,7 +7,7 @@
 @section('content')
 <main class="main" style="background-color: white;">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+        <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item active">Lihat Angkatan Alumni</li>
     </ol>
     <div class="container-fluid">
@@ -35,7 +35,9 @@
                                         @if ($data_alumni->count() > 0)
                                             @foreach ($data_alumni as $index => $alumni)
                                                 <tr>
-                                                    <td class="text-center align-middle">{{ $index + 1 }}</td>
+                                                    <td class="text-center align-middle">
+                                                        {{ ($data_alumni->currentPage() - 1) * $data_alumni->perPage() + $index + 1 }}
+                                                    </td>
                                                     <td class="text-center align-middle">{{ $alumni->nim }}</td>
                                                     <td class="text-center align-middle">{{ $alumni->name }}</td>
                                                     <td class="text-center align-middle">{{ $alumni->jenis_kelamin }}</td>
@@ -62,9 +64,18 @@
                                 </table>
                             </div>
 
-                            <div class="d-flex justify-content-center mt-3">
-                                {{ $data_alumni->links() }}
+                            {{-- Pagination & Info --}}
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                    <medium>
+                                        Menampilkan {{ $data_alumni->firstItem() }} - {{ $data_alumni->lastItem() }} dari total {{ $data_alumni->total() }} data
+                                    </medium>
+                                </div>
+                                <div>
+                                    {{ $data_alumni->links() }}
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -73,7 +84,6 @@
     </div>
 
     <style>
-        /* Warna latar putih konsisten di semua elemen tabel */
         .custom-table,
         .custom-table thead,
         .custom-table tbody,
@@ -105,14 +115,12 @@
             color: white;
         }
 
-        /* Optional: Ensure buttons are aligned and properly spaced */
         .card-body .d-flex {
-            gap: 10px; /* Adjust gap between buttons */
+            gap: 10px;
         }
 
-        /* Optional: Make the action buttons wider and more uniform */
         .card-body .btn-sm {
-            width: 80px; /* Uniform button width */
+            width: 80px;
         }
     </style>
 </main>

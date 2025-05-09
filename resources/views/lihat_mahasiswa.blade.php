@@ -7,7 +7,7 @@
 @section('content')
 <main class="main" style="background-color: white;">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+        <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item active">Lihat Angkatan Mahasiswa</li>
     </ol>
     <div class="container-fluid">
@@ -36,7 +36,9 @@
                                         @if ($data_mahasiswa->count() > 0)
                                             @foreach ($data_mahasiswa as $index => $mhs)
                                                 <tr>
-                                                    <td class="text-center align-middle">{{ $index + 1 }}</td>
+                                                    <td class="text-center align-middle">
+                                                        {{ ($data_mahasiswa->currentPage() - 1) * $data_mahasiswa->perPage() + $index + 1 }}
+                                                    </td>
                                                     <td class="align-middle">{{ $mhs->nim }}</td>
                                                     <td class="align-middle">{{ $mhs->name }}</td> 
                                                     <td class="align-middle">{{ $mhs->phone }}</td>
@@ -56,17 +58,26 @@
                                                 </tr>
                                             @endforeach
                                         @else
-                                            <tr>
-                                                <td colspan="7" class="text-center">Tidak ada data mahasiswa.</td>
-                                            </tr>
+                                        <tr>
+                                            <td colspan="7" class="text-center text-primary">Tidak ada data mahasiswa.</td>
+                                        </tr>
                                         @endif
                                     </tbody>
                                 </table>
                             </div>
 
-                            <div class="d-flex justify-content-center mt-3">
-                                {{ $data_mahasiswa->links() }}
+                            {{-- Pagination --}}
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                    <medium>
+                                        Menampilkan {{ $data_mahasiswa->firstItem() }} - {{ $data_mahasiswa->lastItem() }} dari total {{ $data_mahasiswa->total() }} data
+                                    </medium>
+                                </div>
+                                <div>
+                                    {{ $data_mahasiswa->links() }}
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -79,17 +90,15 @@
         .custom-table thead,
         .custom-table tbody,
         .custom-table tr,
-        .custom-table th,
-        .custom-table td {
+        .custom-table td,
+        .custom-table th {
             background-color: white !important;
         }
 
-        .custom-table td,
-        .custom-table th {
+        .custom-table td, .custom-table th {
             color: #1167B1;
             vertical-align: middle;
         }
-
         .btn-sm {
             font-size: 0.75rem;
             padding: 0.4rem 0.6rem;
@@ -98,11 +107,19 @@
 
         .pagination {
             justify-content: center;
+            font-size: 0.875rem;
+        }
+
+        .pagination .page-item {
+            margin: 0 2px;
         }
 
         .pagination .page-link {
             color: #1167B1;
             border-color: #d0e0f0;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+            border-radius: 0.2rem;
         }
 
         .pagination .page-item.active .page-link {
@@ -111,14 +128,12 @@
             color: white;
         }
 
-        /* Optional: Ensure buttons are aligned and properly spaced */
         .card-body .d-flex {
-            gap: 10px; /* Adjust gap between buttons */
+            gap: 10px;
         }
 
-        /* Optional: Make the action buttons wider and more uniform */
         .card-body .btn-sm {
-            width: 80px; /* Uniform button width */
+            width: 80px;
         }
     </style>
 </main>

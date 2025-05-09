@@ -7,8 +7,7 @@
 @section('content')
 <main class="main">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('alumni.index') }}">Data Alumni</a></li>
+        <li class="breadcrumb-item"><a>Home</a></li>
         <li class="breadcrumb-item active">Edit Data Alumni</li>
     </ol>
     <div class="container-fluid">
