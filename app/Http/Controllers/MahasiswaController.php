@@ -9,8 +9,8 @@ class MahasiswaController extends Controller
 {
     public function index()
     {
-        $lihat_mahasiswa = Mahasiswa::paginate(10);
-        return view('lihat_mahasiswa', compact('lihat_mahasiswa'));
+        $data_mahasiswa = Mahasiswa::paginate(10);
+        return view('lihat_mahasiswa', compact('data_mahasiswa'));
     }
 
     public function create()
@@ -21,9 +21,9 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'name' => 'required',
             'nim' => 'required',
-            'no_telepon' => 'required',
+            'phone' => 'required',
             'email' => 'required',
             'angkatan' => 'required',
         ]);
@@ -36,22 +36,21 @@ class MahasiswaController extends Controller
     public function show($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
-        return view('detail_mahasiswa', compact('lihat_mahasiswa'));
+        return view('detail_mahasiswa', compact('mahasiswa'));
     }
 
     public function edit($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
-        return view('edit_mahasiswa', compact('lihat_mahasiswa'));
+        return view('edit_mahasiswa', compact('mahasiswa'));
     }
 
     public function update(Request $request, $id)
     {
-        // Validasi data sebelum disimpan
         $request->validate([
-            'nama' => 'required',
+            'name' => 'required',
             'nim' => 'required',
-            'no_telepon' => 'required',
+            'phone' => 'required',
             'email' => 'required',
             'angkatan' => 'required',
         ]);

@@ -9,11 +9,12 @@ class Alumni extends Model
 {
     use HasFactory;
 
+    protected $table = 'data_alumni';
+
     protected $fillable =
     [
-        'nama',
+        'name',
         'nim',
-        'phone',
         'tempat_lahir',
         'tanggal_lahir',
         'jenis_kelamin',
