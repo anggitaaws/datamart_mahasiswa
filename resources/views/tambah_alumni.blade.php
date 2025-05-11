@@ -96,14 +96,14 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label text-right">Institusi Pekerjaan</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="institusi_pekerjaan" class="form-control">
+                                        <input type="text" name="institusi_pekerjaan" class="form-control" required>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label text-right">Jenis Pekerjaan</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="jenis_pekerjaan" class="form-control">
+                                        <input type="text" name="jenis_pekerjaan" class="form-control" required>
                                     </div>
                                 </div>
 
